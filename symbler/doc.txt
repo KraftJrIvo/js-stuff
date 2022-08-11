@@ -1,0 +1,41 @@
+# SYMBOL CONSTRUCTION
+
+- Every symbol in Symbler is an array of 2d-vertices, some of which are connected with edges, each edge has a 3-byte rgb color
+
+- Edges in some graphs can form closed loops, some of those are filled in with some 3-byte rgb color
+
+
+# RULES FOR INPUT STRINGS
+
+- Whitespace characters are ignored
+
+- All other UTF-8 characters are interpreted as a number from 0 to 15 (inclusive)
+
+- Characters [0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f] are enterpreted as a HEX digit
+
+- All other characters are interpreted by taking their UTF-8 code mod 16
+
+Thus, every symbol of Symbler can be expressed as a sequence of HEX digits, but it also has a vast number of synonimous non-HEX strings
+
+- Every character represents either one COMMAND or one PARAMETER of some preceding COMMAND
+
+- All input strings represent a sequence of COMMANDS with their PARAMETERS coming right after
+
+For Example: COMMAND0 PARAMETER0 COMMAND1 PARAMETER0 PARAMETER1 COMMAND2 PARAMETER0 ... 
+
+- Different COMMANDS can have different number of PARAMETERS
+
+- If last COMMAND doesn't have enough PARAMETERS, it is ignored
+
+- Some COMMANDS require IDs as PARAMETERS, IDs use minimal number of HEX-digits, that is enough to enumerate all elements of needed type
+
+For Example: if after some COMMAND your vertex count exceeds 16, every vertex ID will use 2 characters, until the count of 256 is exceeded, then 3 and so on...
+
+# LIST OF SUPPORTED COMMANDS
+
+0 - 
+
+#TODO
+-tree
+-mutation
+-wall of symbols
